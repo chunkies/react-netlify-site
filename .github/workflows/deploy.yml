@@ -1,18 +1,21 @@
-name: Deploy to Netlify
+name: CI and Netlify deploy
 
 on:
+  pull_request:
   push:
     branches: [master]
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: netlify-production
+  group: netlify-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  validate-and-deploy:
+    name: Validate and deploy
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -27,11 +30,15 @@ jobs:
       - run: npm run lint
       - run: npm run build
 
-      - name: Deploy to Netlify
+      - name: Deploy master to Netlify production
+        if: >-
+          github.event_name == 'push' ||
+          (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master')
         uses: nwtgck/actions-netlify@v3
         with:
           publish-dir: ./dist
           production-deploy: true
+          deploy-message: GitHub Actions deploy ${{ github.sha }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
