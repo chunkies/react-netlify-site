@@ -29,7 +29,7 @@ The GitHub repository needs these Actions secrets:
 - `NETLIFY_AUTH_TOKEN`: a Netlify personal access token.
 - `NETLIFY_SITE_ID`: the API ID of the Netlify site.
 
-Never commit either value. The included `netlify.toml` contains only public build and routing configuration.
+Never commit either value. The included `netlify.toml` contains only public build and routing configuration. Matching `_redirects` and `_headers` files live under `public/` so the GitHub Action includes those rules in the uploaded `dist` directory.
 
 ## Netlify plan
 
