@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="32" fill="#151515"/>
-  <text x="32" y="39" fill="#f2efe8" font-family="Georgia, serif" font-size="22" font-style="italic" text-anchor="middle">JR</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Jean Ruiu monogram">
+  <rect width="64" height="64" rx="14" fill="#9b4a32"/>
+  <path fill="#f2efe8" d="M8 11h23v26.5C31 49 25.3 55 15.3 55 10.6 55 7 53.4 4.5 50l5.7-6.3c1.5 1.9 3.4 2.8 5.7 2.8 4.4 0 6.4-2.9 6.4-9V19H8v-8Z"/>
+  <path fill="#f2efe8" d="M34 11h11.5C54.2 11 59 15.7 59 23.3c0 5.1-2.5 9-7 11l8 18.7h-9.4l-6.4-16.5h-1.7V53H34V11Zm8.5 7.5v10.8h2.6c3.6 0 5.5-1.9 5.5-5.6 0-3.5-1.8-5.2-5.5-5.2h-2.6Z"/>
 </svg>

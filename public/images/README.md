@@ -10,4 +10,6 @@ All derivatives are metadata-stripped sRGB WebP files. `src/portfolioData.js` ma
 
 `jean-ruiu-headshot.webp` is the optimized contact-section self-portrait sourced from `/home/tristan/Downloads/headshto.jpg`; the original remains unchanged.
 
+`social/jean-ruiu-photography.jpg` is the metadata-stripped 1200 × 630 Open Graph crop of `portfolio/full/dsf-8226.webp`, used for large link previews on Discord and other social platforms.
+
 When adding a photograph, export the same normalized filename into all three directories and add its metadata to `rawFrames` in `src/portfolioData.js`.
