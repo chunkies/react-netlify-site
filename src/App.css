@@ -742,47 +742,73 @@
 
 .gallery-launch {
   width: 100%;
-  padding: 14px 0;
+  min-height: 64px;
+  padding: 0 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 0;
-  border-top: 1px solid var(--line-strong);
-  border-bottom: 1px solid var(--line-strong);
-  color: var(--ink);
-  background: transparent;
+  gap: 24px;
+  border: 1px solid var(--rust);
+  color: var(--paper);
+  background: var(--rust);
+  box-shadow: 0 12px 28px rgba(79, 39, 27, 0.16);
   cursor: pointer;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 760;
   letter-spacing: 0.1em;
   text-align: left;
   text-transform: uppercase;
   transition:
-    padding var(--motion-standard) var(--motion-ease),
     color var(--motion-quick) var(--motion-smooth),
-    background-color var(--motion-standard) var(--motion-smooth);
+    background-color var(--motion-quick) var(--motion-smooth),
+    border-color var(--motion-quick) var(--motion-smooth),
+    box-shadow var(--motion-standard) var(--motion-smooth),
+    transform var(--motion-quick) var(--motion-ease);
 }
 
-.gallery-launch span {
-  color: var(--muted);
+.gallery-launch-copy {
+  color: inherit;
+}
+
+.gallery-launch-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(247, 244, 237, 0.72);
+}
+
+.gallery-launch-meta > span {
   font-size: 0.58rem;
-  transition: color var(--motion-quick) var(--motion-smooth);
+}
+
+.gallery-launch svg {
+  width: 19px;
+  flex: 0 0 auto;
+  transition: transform var(--motion-quick) var(--motion-ease);
 }
 
 .gallery-launch:hover,
 .gallery-launch:focus-visible {
-  padding-inline: 12px;
   color: var(--paper);
   background: var(--ink);
+  border-color: var(--ink);
+  box-shadow: 0 16px 34px rgba(21, 21, 21, 0.2);
+  transform: translateY(-2px);
 }
 
-.gallery-launch:hover span,
-.gallery-launch:focus-visible span {
-  color: rgba(247, 244, 237, 0.64);
+.gallery-launch:hover svg,
+.gallery-launch:focus-visible svg {
+  transform: translateX(4px);
+}
+
+.gallery-launch:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
 }
 
 .gallery-launch:active {
-  transform: scale(0.985);
+  box-shadow: 0 8px 18px rgba(21, 21, 21, 0.16);
+  transform: translateY(0) scale(0.985);
 }
 
 .work-grid {

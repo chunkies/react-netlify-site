@@ -480,8 +480,17 @@ function App() {
                 <p>
                   Ten photographs set the pace here. The complete archive is always one click away.
                 </p>
-                <button className="gallery-launch" type="button" onClick={() => openGallery(0)}>
-                  Browse full portfolio <span>{portfolioItems.length} frames</span>
+                <button
+                  className="gallery-launch"
+                  type="button"
+                  onClick={() => openGallery(0)}
+                  aria-label={`Browse the full portfolio — ${portfolioItems.length} frames`}
+                >
+                  <span className="gallery-launch-copy">Browse full portfolio</span>
+                  <span className="gallery-launch-meta">
+                    <span>{portfolioItems.length} frames</span>
+                    <ArrowIcon />
+                  </span>
                 </button>
               </div>
             </header>
