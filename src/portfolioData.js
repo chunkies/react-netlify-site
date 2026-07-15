@@ -78,7 +78,6 @@ export const portfolioItems = rawFrames.map(([slug, category, alt], index) => {
   return {
     id,
     slug,
-    title: `Untitled ${id}`,
     category,
     location: 'Melbourne, Australia',
     image: `/images/portfolio/full/${slug}.webp`,

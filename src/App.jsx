@@ -296,7 +296,7 @@ function GalleryModal({ activeIndex, items, onClose, onNext, onPrevious, onSelec
                 className={`${index === activeIndex ? 'is-active' : ''}${item.orientation === 'portrait' ? ' is-portrait' : ''}`.trim()}
                 type="button"
                 onClick={() => selectFromIndex(index)}
-                aria-label={`View ${item.title}: ${item.alt}`}
+                aria-label={`View frame ${item.id}: ${item.alt}`}
                 aria-current={index === activeIndex ? 'true' : undefined}
                 key={item.slug}
               >
@@ -324,10 +324,7 @@ function GalleryModal({ activeIndex, items, onClose, onNext, onPrevious, onSelec
                 <img src={activeItem.image} alt={activeItem.alt} decoding="async" fetchPriority="high" />
               </div>
               <figcaption>
-                <div>
-                  <span>{activeItem.category}</span>
-                  <h2>{activeItem.title}</h2>
-                </div>
+                <span>{activeItem.category}</span>
                 <p>{activeItem.location}</p>
               </figcaption>
             </figure>
@@ -345,7 +342,7 @@ function GalleryModal({ activeIndex, items, onClose, onNext, onPrevious, onSelec
                   className={`${index === activeIndex ? 'is-active' : ''}${item.orientation === 'portrait' ? ' is-portrait' : ''}`.trim()}
                   type="button"
                   onClick={() => onSelect(index)}
-                  aria-label={`View ${item.title}`}
+                  aria-label={`View frame ${item.id}: ${item.alt}`}
                   aria-current={index === activeIndex ? 'true' : undefined}
                   ref={index === activeIndex ? activeThumbnailRef : null}
                   key={item.slug}
@@ -361,7 +358,7 @@ function GalleryModal({ activeIndex, items, onClose, onNext, onPrevious, onSelec
       )}
 
       <p className="screen-reader-only" aria-live="polite">
-        Showing {activeItem.title}, image {activeIndex + 1} of {items.length}
+        Showing frame {activeItem.id} of {items.length}: {activeItem.alt}
       </p>
     </div>
   )
@@ -507,7 +504,7 @@ function App() {
                     className="work-image-wrap"
                     type="button"
                     onClick={() => openGallery(item.galleryIndex)}
-                    aria-label={`Open ${item.title} in the portfolio viewer`}
+                    aria-label={`Open frame ${item.id} in the portfolio viewer: ${item.alt}`}
                   >
                     <img
                       src={item.displayImage}
@@ -524,10 +521,7 @@ function App() {
                     </span>
                   </button>
                   <figcaption>
-                    <div>
-                      <h3>{item.title}</h3>
-                      <p>{item.category}</p>
-                    </div>
+                    <p>{item.category}</p>
                     <span>{item.location}</span>
                   </figcaption>
                 </figure>
@@ -551,7 +545,7 @@ function App() {
                   width="933"
                   height="1400"
                 />
-                <figcaption>Street portraits · {aboutFrame.title}</figcaption>
+                <figcaption>Street portraits</figcaption>
               </figure>
 
               <div className="about-copy">
