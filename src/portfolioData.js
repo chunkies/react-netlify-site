@@ -72,13 +72,23 @@ const rawFrames = [
 
 const portraitFrames = new Set(['dsf-8710', 'dsf-8855', 'dsf-8856', 'dsf-8897'])
 
+const categoryLabels = {
+  'Gallery studies': 'Gallery',
+  'Street / day': 'Street',
+  'Colour / form': 'Colour & architecture',
+  'City fragments': 'Everyday details',
+  'Street / night': 'Night',
+  'After dark': 'Night',
+  'Street portraits': 'Portraits',
+}
+
 export const portfolioItems = rawFrames.map(([slug, category, alt], index) => {
   const id = String(index + 1).padStart(2, '0')
 
   return {
     id,
     slug,
-    category,
+    category: categoryLabels[category] ?? category,
     location: 'Melbourne, Australia',
     image: `/images/portfolio/full/${slug}.webp`,
     displayImage: `/images/portfolio/display/${slug}.webp`,

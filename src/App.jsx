@@ -9,7 +9,7 @@ import {
 } from './portfolioData'
 import './App.css'
 
-const disciplines = ['Street', 'Portrait', 'Documentary', 'Colour']
+const disciplines = ['Portraits', 'Events', 'Editorial', 'Street']
 
 function ArrowIcon() {
   return (
@@ -265,7 +265,7 @@ function GalleryModal({ activeIndex, items, onClose, onNext, onPrevious, onSelec
     <div className="gallery-modal" role="dialog" aria-modal="true" aria-label="Full photography portfolio">
       <div className="gallery-topbar">
         <p>
-          Full portfolio
+          Full gallery
           <span>{String(activeIndex + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}</span>
         </p>
         <div className="gallery-topbar-actions">
@@ -287,8 +287,8 @@ function GalleryModal({ activeIndex, items, onClose, onNext, onPrevious, onSelec
       {isIndexOpen ? (
         <section className="gallery-index" aria-labelledby="gallery-index-title">
           <header>
-            <p>Complete archive</p>
-            <h2 id="gallery-index-title">{items.length} photographs. One continuous index.</h2>
+            <p>All photographs</p>
+            <h2 id="gallery-index-title">Choose a photo to open it.</h2>
           </header>
           <div className="gallery-index-grid">
             {items.map((item, index) => (
@@ -352,7 +352,7 @@ function GalleryModal({ activeIndex, items, onClose, onNext, onPrevious, onSelec
                 </button>
               ))}
             </nav>
-            <p>Arrow keys · Swipe · I for index · Esc to close</p>
+            <p>Use the arrow keys or swipe · I opens all photos · Esc closes</p>
           </div>
         </>
       )}
@@ -427,42 +427,42 @@ function App() {
 
             <div className="hero-content page-width">
               <div className="hero-main">
-                <p className="hero-kicker">Street &amp; documentary photography · Melbourne</p>
-                <h1 id="hero-title" aria-label="The city never holds still.">
+                <p className="hero-kicker">Jean Ruiu · Melbourne photographer</p>
+                <h1 id="hero-title" aria-label="People, places, and nights around Melbourne.">
                   <span className="hero-title-line">
-                    <span>The city</span>
+                    <span>People, places,</span>
                   </span>
                   <span className="hero-title-line">
-                    <span><em>never</em> holds</span>
+                    <span><em>and nights</em></span>
                   </span>
                   <span className="hero-title-line">
-                    <span>still.</span>
+                    <span>around Melbourne.</span>
                   </span>
                 </h1>
                 <p className="hero-lede">
-                  Unscripted people, strange light, and the split-seconds that make a place feel alive.
+                  I photograph portraits, events, and everyday life around the city.
                 </p>
                 <a className="text-link text-link-light" href="#work">
-                  Enter the work <ArrowIcon />
+                  View my work <ArrowIcon />
                 </a>
               </div>
 
               <div className="hero-meta">
-                <span>Selected works · {portfolioItems.length} frames</span>
-                <span>Melbourne · Day into night</span>
+                <span>{portfolioItems.length} photographs</span>
+                <span>Portraits · Events · Street</span>
               </div>
             </div>
           </section>
 
           <section className="intro page-width" aria-labelledby="intro-title">
-            <p className="section-label" data-reveal="up">The work</p>
+            <p className="section-label" data-reveal="up">About the work</p>
             <div className="intro-copy" data-reveal="up" style={{ '--reveal-delay': '80ms' }}>
               <h2 id="intro-title">
-                The odd gestures, hard light, and human collisions that make a city impossible to stage.
+                I’m drawn to people, colour, and the moments you can’t plan.
               </h2>
               <p>
-                Jean Ruiu photographs Melbourne as it moves: instinctive street portraits, graphic
-                fragments, and the charged space between strangers after dark.
+                Most of these photographs were taken while walking around Melbourne. Some are
+                portraits, some come from events, and some are things I would have regretted not shooting.
               </p>
             </div>
           </section>
@@ -470,22 +470,22 @@ function App() {
           <section className="work-section page-width" id="work" aria-labelledby="work-title">
             <header className="section-heading" data-reveal="up">
               <div>
-                <p className="section-label">Selected frames</p>
-                <h2 id="work-title">A visual rhythm, not a highlight reel.</h2>
+                <p className="section-label">Selected photographs</p>
+                <h2 id="work-title">A few favourites.</h2>
               </div>
               <div className="section-heading-aside">
                 <p>
-                  Ten photographs set the pace here. The complete archive is always one click away.
+                  Start with these ten, or open the full gallery to see everything.
                 </p>
                 <button
                   className="gallery-launch"
                   type="button"
                   onClick={() => openGallery(0)}
-                  aria-label={`Browse the full portfolio — ${portfolioItems.length} frames`}
+                  aria-label={`Open the full gallery — ${portfolioItems.length} photographs`}
                 >
-                  <span className="gallery-launch-copy">Browse full portfolio</span>
+                  <span className="gallery-launch-copy">Open full gallery</span>
                   <span className="gallery-launch-meta">
-                    <span>{portfolioItems.length} frames</span>
+                    <span>{portfolioItems.length} photos</span>
                     <ArrowIcon />
                   </span>
                 </button>
@@ -504,7 +504,7 @@ function App() {
                     className="work-image-wrap"
                     type="button"
                     onClick={() => openGallery(item.galleryIndex)}
-                    aria-label={`Open frame ${item.id} in the portfolio viewer: ${item.alt}`}
+                    aria-label={`Open photograph ${item.id}: ${item.alt}`}
                   >
                     <img
                       src={item.displayImage}
@@ -515,9 +515,9 @@ function App() {
                       height={item.orientation === 'portrait' ? '1400' : '933'}
                       sizes="(max-width: 760px) 100vw, 56vw"
                     />
-                    <span className="frame-mark">Frame {item.id}</span>
+                    <span className="frame-mark">Photo {item.id}</span>
                     <span className="work-view-label">
-                      View frame <ArrowIcon />
+                      Open photo <ArrowIcon />
                     </span>
                   </button>
                   <figcaption>
@@ -529,8 +529,8 @@ function App() {
             </div>
 
             <p className="archive-note" data-reveal="up">
-              The complete portfolio contains {portfolioItems.length} photographs across gallery studies,
-              colour, daytime street work, portraiture, and the city after dark.
+              There are {portfolioItems.length} photographs in the full gallery, taken around Melbourne
+              during the day, at night, at events, and on ordinary walks through the city.
             </p>
           </section>
 
@@ -549,18 +549,18 @@ function App() {
               </figure>
 
               <div className="about-copy">
-                <p className="section-label" data-reveal="up">Approach</p>
+                <p className="section-label" data-reveal="up">About Jean</p>
                 <h2 id="about-title" data-reveal="up" style={{ '--reveal-delay': '70ms' }}>
-                  Instinct first. The frame comes after.
+                  I’m Jean, a photographer based in Melbourne.
                 </h2>
                 <div className="about-body" data-reveal="up" style={{ '--reveal-delay': '130ms' }}>
                   <p>
-                    I photograph the moment before people arrange themselves—the gestures, glare,
-                    colour, and collisions that make the street feel alive.
+                    I like photographs that feel natural and alive. That usually means working quickly,
+                    paying attention, and giving people enough room to be themselves.
                   </p>
                   <p>
-                    Based in Melbourne and available for portraits, events, editorial work, and
-                    documentary commissions.
+                    I’m available for portraits, events, editorial work, and documentary projects.
+                    If you have something in mind, send me a message and tell me about it.
                   </p>
                 </div>
 
@@ -597,10 +597,11 @@ function App() {
               </figure>
 
               <div className="contact-details">
-                <p className="contact-overline">Contact · Melbourne, Australia · Available for commissions</p>
-                <h2 id="contact-title">Direct, uncomplicated, and open to the right idea.</h2>
+                <p className="contact-overline">Bookings and enquiries · Melbourne, Australia</p>
+                <h2 id="contact-title">Have a shoot in mind? Let’s talk.</h2>
                 <p className="contact-intro">
-                  For portraits, events, editorial commissions, prints, or a conversation about the work.
+                  Send through what you’re planning, where it is, and when you need a photographer.
+                  I’ll get back to you directly.
                 </p>
 
                 <div className="contact-list" aria-label="Contact details">
@@ -611,7 +612,7 @@ function App() {
                   >
                     <span>Email</span>
                     <strong>Artimestypej99@gmail.com</strong>
-                    <small>Write to Jean</small>
+                    <small>Send an email</small>
                     <ArrowIcon />
                   </a>
                   <a
@@ -622,13 +623,13 @@ function App() {
                   >
                     <span>Instagram</span>
                     <strong>@j_e_a_n_l_u_c</strong>
-                    <small>View profile</small>
+                    <small>See recent work</small>
                     <ArrowIcon />
                   </a>
                   <a className="contact-link" href="tel:+61468399616">
                     <span>Phone</span>
                     <strong>0468 399 616</strong>
-                    <small>Call Jean</small>
+                    <small>Call or text</small>
                     <ArrowIcon />
                   </a>
                 </div>
